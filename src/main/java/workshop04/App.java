@@ -55,8 +55,6 @@ public class App
                 while (!clientMessage.equals("close")) {
 
                     //Read message from client
-                    Scanner scanner = new Scanner(System.in);
-                    clientMessage = scanner.next();
                     clientMessage = dis.readUTF();
 
                     //Check for specific message from client
@@ -67,10 +65,10 @@ public class App
                         newCookie.readCookieFile(fileName);
                         String cookieString = newCookie.getRandomCookie();
                         dos.writeUTF("cookie-text: " + cookieString);
+                        dos.flush();
                     }
                 }
                 //Close all output stream in reverse order
-                dos.flush();
                 dos.close();
                 bos.close();
                 os.close();
